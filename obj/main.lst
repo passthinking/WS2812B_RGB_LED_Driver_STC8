@@ -1,0 +1,239 @@
+C51 COMPILER V9.53.0.0   MAIN                                                              11/20/2019 20:19:06 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN ..\obj\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\main) DEBUG OBJECTEXTEN
+                    -D PRINT(..\obj\main.lst) TABS(2) OBJECT(..\obj\main.obj)
+
+line level    source
+
+   1          #include "main.h"
+   2          #include "intrins.h"
+   3          #include <stdio.h>
+   4          #include <stdlib.h>
+   5          
+   6           
+   7          sbit WS2812 = P1^0;
+   8           
+   9          //复位延时
+  10          void Delay50us()    //@25MHz
+  11          {
+  12   1        unsigned char i, j;
+  13   1      
+  14   1        i = 2;
+  15   1        j = 51;
+  16   1        do
+  17   1        {
+  18   2          while (--j);
+  19   2        } while (--i);
+  20   1      }
+  21          
+  22          
+  23          //1码，高电平850ns 低电平400ns 误差正负150ns
+  24          void RGB_Set_Up()
+  25          {
+  26   1        EA = 0;
+  27   1        WS2812 = 1;
+  28   1        _nop_(); _nop_();_nop_();_nop_();
+  29   1        WS2812 = 0;
+  30   1        EA = 1;
+  31   1        
+  32   1      }
+  33           
+  34          //1码，高电平400ns 低电平850ns 误差正负150ns
+  35          void RGB_Set_Down()
+  36          {
+  37   1        EA = 0;
+  38   1        WS2812 = 1;
+  39   1        _nop_(); _nop_(); _nop_(); _nop_(); _nop_(); _nop_(); _nop_();_nop_(); _nop_();
+  40   1        _nop_(); _nop_(); _nop_(); _nop_(); _nop_(); _nop_(); _nop_();_nop_(); _nop_();
+  41   1        WS2812 = 0; 
+  42   1        EA = 1;
+  43   1      }
+  44           
+  45          //发送24位数据
+  46          void Send_2811_24bits(unsigned char *p, unsigned int n )
+  47          {
+  48   1        unsigned int i,j;
+  49   1        unsigned char value;
+  50   1        for(i = 0; i < n; i ++)
+  51   1        {
+  52   2          value = p[i];
+  53   2          for(j = 0; j < 8; j ++)
+  54   2          {
+C51 COMPILER V9.53.0.0   MAIN                                                              11/20/2019 20:19:06 PAGE 2   
+
+  55   3            if((value & 0x80) == 0x80)
+  56   3            {
+  57   4              RGB_Set_Up();
+  58   4            }
+  59   3            else
+  60   3            {
+  61   4              RGB_Set_Down();
+  62   4            }
+  63   3            value <<= 1;
+  64   3          }
+  65   2        }
+  66   1      }
+  67          
+  68          //复位码
+  69          void RGB_Rst()
+  70          {
+  71   1        WS2812 = 0;
+  72   1        Delay50us();
+  73   1      }
+  74          
+  75          
+  76          void Delay1000ms()    //@25MHz
+  77          {
+  78   1        unsigned char i, j, k;
+  79   1      
+  80   1        i = 95;
+  81   1        j = 255;
+  82   1        k = 174;
+  83   1        do
+  84   1        {
+  85   2          do
+  86   2          {
+  87   3            while (--k);
+  88   3          } while (--j);
+  89   2        } while (--i);
+  90   1      }
+  91          
+  92          void Delay100ms()   //@25MHz
+  93          {
+  94   1        unsigned char i, j, k;
+  95   1      
+  96   1        i = 10;
+  97   1        j = 128;
+  98   1        k = 218;
+  99   1        do
+ 100   1        {
+ 101   2          do
+ 102   2          {
+ 103   3            while (--k);
+ 104   3          } while (--j);
+ 105   2        } while (--i);
+ 106   1      }
+ 107          
+ 108          void setRGB(unsigned char *p,int Number, unsigned char R, unsigned char G, unsigned char B)
+ 109          {
+ 110   1        int value = 0;
+ 111   1        value = 3*Number; 
+ 112   1        p[ value + 0 ] = G;
+ 113   1        p[ value + 1 ] = R;
+ 114   1        p[ value + 2 ] = B;
+ 115   1      }
+ 116          
+C51 COMPILER V9.53.0.0   MAIN                                                              11/20/2019 20:19:06 PAGE 3   
+
+ 117          void waterfall_light(unsigned char *p, int Number)
+ 118          {
+ 119   1        int i;
+ 120   1        for(i = 0; i < Number; i ++)
+ 121   1        {
+ 122   2          if(i>0)
+ 123   2          {
+ 124   3            setRGB( p, i-1, 255, 255, 255);
+ 125   3          }
+ 126   2          setRGB( p, i, 0, 255, 255);
+ 127   2          RGB_Rst();
+ 128   2          Send_2811_24bits(p,3*30);
+ 129   2          Delay100ms();   //@25MHz
+ 130   2        }
+ 131   1        setRGB( p, 0, 255, 255, 255);
+ 132   1        setRGB( p, 1, 255, 255, 255);
+ 133   1        setRGB( p, 2, 255, 255, 255);
+ 134   1        setRGB( p, 3, 255, 255, 255);
+ 135   1        setRGB( p, 4, 255, 255, 255);
+ 136   1        setRGB( p, 5, 255, 255, 255);
+ 137   1        setRGB( p, 6, 255, 255, 255);
+ 138   1        setRGB( p, 7, 255, 255, 255);
+ 139   1      }
+ 140          
+ 141          
+ 142          void main()
+ 143          {
+ 144   1        unsigned char xdata M[3*30] = { 
+ 145   1          0  , 255, 255, 
+ 146   1          255, 0  , 255,
+ 147   1          255, 255, 0  ,
+ 148   1          255, 255, 255,
+ 149   1          0  , 0  , 0  ,
+ 150   1          255, 0  , 0  ,
+ 151   1          0  , 255, 0  ,
+ 152   1          0  , 0  , 255,  
+ 153   1          };
+ 154   1        
+ 155   1        P1M0 = 0xFF;
+ 156   1        P1M1 = 0x00;  
+ 157   1          
+ 158   1      //  srand(23);
+ 159   1        
+ 160   1        Delay1000ms();    //@25MHz
+ 161   1        
+ 162   1      //  setRGB( M, 0, 0, 255, 255);
+ 163   1          
+ 164   1        while(1)
+ 165   1        {
+ 166   2          
+ 167   2          
+ 168   2          waterfall_light(M, 30);
+ 169   2          
+ 170   2      //    M[0] = rand()%0xff;
+ 171   2      //    M[1] = rand()%0xff;
+ 172   2      //    M[2] = rand()%0xff;
+ 173   2      //    M[3] = rand()%0xff;
+ 174   2      //    M[4] = rand()%0xff;
+ 175   2      //    M[5] = rand()%0xff;
+ 176   2      //    M[6] = rand()%0xff;
+ 177   2      //    M[7] = rand()%0xff;
+ 178   2      //    M[8] = rand()%0xff;
+C51 COMPILER V9.53.0.0   MAIN                                                              11/20/2019 20:19:06 PAGE 4   
+
+ 179   2      //    M[9] = rand()%0xff;
+ 180   2      //    M[10] = rand()%0xff;
+ 181   2      //    M[11] = rand()%0xff;
+ 182   2      //    M[12] = rand()%0xff;
+ 183   2      //    M[13] = rand()%0xff;
+ 184   2      //    M[14] = rand()%0xff;
+ 185   2      //    M[15] = rand()%0xff;
+ 186   2      //    M[16] = rand()%0xff;
+ 187   2      //    M[17] = rand()%0xff;
+ 188   2      //    M[18] = rand()%0xff;
+ 189   2      //    M[19] = rand()%0xff;
+ 190   2      //    M[20] = rand()%0xff;
+ 191   2      //    M[21] = rand()%0xff;
+ 192   2      //    M[22] = rand()%0xff;
+ 193   2      //    M[23] = rand()%0xff;  
+ 194   2      
+ 195   2        }
+ 196   1      }
+ 197          
+ 198          
+ 199          
+ 200          
+ 201          
+ 202          
+ 203          
+ 204          
+ 205          
+ 206          
+ 207          
+ 208          
+ 209          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    542    ----
+   CONSTANT SIZE    =     90    ----
+   XDATA SIZE       =   ----      90
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      20
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
