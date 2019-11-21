@@ -4,57 +4,102 @@
 #include <stdlib.h>
 #include <math.h>
 
- 
-#define WS2812  P55
- 
-//1码，高电平850ns 低电平400ns 误差正负150ns
-void RGB_Set_Up()
-{
-	EA = 0;
-	WS2812 = 1;
-	_nop_(); _nop_();
-	WS2812 = 0;
-	EA = 1;
-}
- 
-//1码，高电平400ns 低电平850ns 误差正负150ns
-void RGB_Set_Down()
-{
-	EA = 0;
-	WS2812 = 1;
-	_nop_(); _nop_(); _nop_(); _nop_(); _nop_(); _nop_();
-	_nop_(); _nop_(); _nop_(); _nop_(); _nop_(); _nop_();
-	WS2812 = 0; 
-	EA = 1;
-}
+#define WS2812_1  P54
+#define WS2812_2  P55
  
 //发送24位数据
-void Send_2811_24bits(unsigned char *p, unsigned int n )
+void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int n )
 {
-	unsigned int i;
-	unsigned char value,j;
-	for(i = 0; i < n; i ++)
+	unsigned char value_1,value_2,j;
+	value_1 = Line_1[n];
+	value_2 = Line_2[n];
+	for(j = 0; j < 8; j ++)
 	{
-		value = p[i];
-		for(j = 0; j < 8; j ++)
+		//0码，高电平850ns 低电平400ns 误差正负150ns
+		if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 ) )
 		{
-			if((value & 0x80) == 0x80)
-			{
-				RGB_Set_Up();
-			}
-			else
-			{
-				RGB_Set_Down();
-			}
-			value <<= 1;
+			EA = 0;
+			WS2812_1 = 1;
+			WS2812_2 = 1;
+			_nop_();
+			_nop_();
+			WS2812_1 = 0;
+			WS2812_2 = 0;
+			EA = 1;
+		}else if( ( ( value_1 & 0x80 ) != 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 )  )
+		{
+			EA = 0;
+			WS2812_1 = 1;
+			WS2812_2 = 1;
+			_nop_(); 
+			_nop_(); 
+			WS2812_2 = 0;
+			_nop_(); 
+			_nop_(); 
+			_nop_();
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_();
+			_nop_();
+			_nop_();
+			WS2812_1 = 0; 
+			EA = 1;
+		}else if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) != 0x80 )  )
+		{
+			EA = 0;
+			WS2812_1 = 1;
+			WS2812_2 = 1;
+			_nop_(); 
+			_nop_(); 
+			WS2812_1 = 0;
+			_nop_(); 
+			_nop_(); 
+			_nop_();
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_();
+			_nop_();
+			_nop_();
+			WS2812_2 = 0; 
+			EA = 1;
+		}else
+		{
+			EA = 0;
+			WS2812_1 = 1;
+			WS2812_2 = 1;
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_();
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_(); 
+			_nop_();
+			_nop_();
+			_nop_();
+			WS2812_1 = 0;
+			WS2812_2 = 0; 
+			EA = 1;
 		}
+		value_1 <<= 1;
+		value_2 <<= 1;
 	}
 }
 
 //复位码
 void RGB_Rst()
 {
-	WS2812 = 0;
+	WS2812_1 = 0;
+	WS2812_2 = 0;
 }
 
 void delay50us(int t)		//@27.000MHz
@@ -76,12 +121,12 @@ void setRGB(unsigned char *p,int Number, unsigned char G, unsigned char R, unsig
 	p[ value + 2 ] = B;
 }
 
-void waterfall_light(unsigned char *p, int Number)
+void waterfall_light(unsigned char *Line_1, unsigned char *Line_2, int Number)
 {
 	int i;
 	for(i = 0; i < Number; i ++)
 	{
-		Send_2811_24bits(p,3*Number);
+		Send_2811_24bits( Line_1, Line_2, i );
 	}
 	RGB_Rst();
 }
@@ -89,22 +134,42 @@ void waterfall_light(unsigned char *p, int Number)
 
 void main()
 {
-	unsigned char xdata M[3*16] = { 
-		0  , 0  , 0  , 
-		0  , 255, 255,
-		255, 255, 0  ,
-		0  , 255, 255,
-	};
+	unsigned char xdata Line_1[3*8];
+	unsigned char xdata Line_2[3*8];
 	unsigned char Number = 0;
+	unsigned char bit_flag = 0;
 
 	P5M0 = 0xFF;
 	P5M1 = 0x00;	
 	
+	for(Number = 0; Number < 3*16; Number ++)
+	{
+		Line_1[ Number ] = 0xff;
+		Line_2[ Number ] = 0xff;
+	}
+	
+	setRGB( Line_1 , 0, 0, 0  , 0   );
+	setRGB( Line_2 , 1, 0  , 0, 0   );
+	
 	while(1)
 	{
 		Number ++ ;
-		setRGB(M, Number % 16, 256 - Number, Number, Number );
-		waterfall_light( M, 16 );
+		
+		if(bit_flag)
+		{
+			setRGB( Line_1 , 0, 0  , 0  , 0   );
+			setRGB( Line_1 , 1, 255, 255, 255 );
+		}
+		else
+		{
+			setRGB( Line_1 , 0, 255, 255, 255 );
+			setRGB( Line_1 , 1, 0  , 0  , 0   );
+		}
+		bit_flag = ~bit_flag;
+		
+//		setRGB( Line_1 , Number % 8, Number, Number, Number );
+//		setRGB( Line_2 , Number % 8, 256 - Number, 256 -Number, Number );
+		waterfall_light( Line_1, Line_2, 3 * 8 );
 		delay50us(5);									//@27.000MHz
 	}
 }
