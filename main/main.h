@@ -2,7 +2,7 @@
 #define _MAIN_H_
 
 
-#include "STC12C5A60S2.H"
+#include "STC8.H"
 
 
 
