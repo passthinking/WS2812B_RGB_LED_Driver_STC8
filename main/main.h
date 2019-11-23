@@ -3,6 +3,10 @@
 
 
 #include "STC8.H"
+#include "intrins.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 
 

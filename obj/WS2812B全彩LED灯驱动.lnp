@@ -1,3 +1,4 @@
-"..\obj\main.obj" 
+"..\obj\main.obj",
+"..\obj\WS2812B_RGB_Driver.obj" 
 TO "..\obj\WS2812B全彩LED灯驱动" 
 PRINT("..\obj\WS2812B全彩LED灯驱动.m51") RAMSIZE(256) 

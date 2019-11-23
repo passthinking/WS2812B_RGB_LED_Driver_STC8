@@ -324,7 +324,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\main</IncludePath>
+              <IncludePath>..\main;..\library</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -385,6 +385,13 @@
         </Group>
         <Group>
           <GroupName>Library</GroupName>
+          <Files>
+            <File>
+              <FileName>WS2812B_RGB_Driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\WS2812B_RGB_Driver.c</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>

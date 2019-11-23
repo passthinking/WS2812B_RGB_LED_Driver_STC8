@@ -1,0 +1,1 @@
+"..\library\WS2812B_RGB_Driver.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(..\main;..\library) DEBUG OBJECTEXTEND PRINT(..\obj\WS2812B_RGB_Driver.lst) TABS (2) OBJECT(..\obj\WS2812B_RGB_Driver.obj)

@@ -1,237 +1,108 @@
-C51 COMPILER V9.53.0.0   MAIN                                                              11/23/2019 01:04:49 PAGE 1   
+C51 COMPILER V9.53.0.0   MAIN                                                              11/23/2019 15:13:51 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN ..\obj\main.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\main) DEBUG OBJECTEXTEN
-                    -D PRINT(..\obj\main.lst) TABS(2) OBJECT(..\obj\main.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\main\main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\main;..\library) DEBUG
+                    - OBJECTEXTEND PRINT(..\obj\main.lst) TABS(2) OBJECT(..\obj\main.obj)
 
 line level    source
 
    1          #include "main.h"
-   2          #include "intrins.h"
-   3          #include <stdio.h>
-   4          #include <stdlib.h>
-   5          #include <math.h>
-   6          
-   7          #define WS2812_1  P54
-   8          #define WS2812_2  P55
-   9           
-  10          //发送24位数据
-  11          void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int n )
-  12          {
-  13   1        unsigned char value_1,value_2,j;
-  14   1        value_1 = Line_1[n];
-  15   1        value_2 = Line_2[n];
-  16   1        for(j = 0; j < 8; j ++)
-  17   1        {
-  18   2          //0码，高电平850ns 低电平400ns 误差正负150ns
-  19   2          if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 ) )
-  20   2          {
-  21   3            EA = 0;
-  22   3            WS2812_1 = 1;
-  23   3            WS2812_2 = 1;
-  24   3            _nop_();
-  25   3            _nop_();
-  26   3            WS2812_1 = 0;
-  27   3            WS2812_2 = 0;
-  28   3            EA = 1;
-  29   3          }else if( ( ( value_1 & 0x80 ) != 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 )  )
-  30   2          {
-  31   3            EA = 0;
-  32   3            WS2812_1 = 1;
-  33   3            WS2812_2 = 1;
-  34   3            _nop_(); 
-  35   3            _nop_(); 
-  36   3            WS2812_2 = 0;
-  37   3            _nop_(); 
-  38   3            _nop_(); 
-  39   3            _nop_();
-  40   3            _nop_(); 
-  41   3            _nop_(); 
-  42   3            _nop_(); 
-  43   3            _nop_(); 
-  44   3            _nop_(); 
-  45   3            _nop_();
-  46   3            WS2812_1 = 0; 
-  47   3            EA = 1;
-  48   3          }else if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) != 0x80 )  )
-  49   2          {
-  50   3            EA = 0;
-  51   3            WS2812_1 = 1;
-  52   3            WS2812_2 = 1;
-  53   3            _nop_(); 
-  54   3            _nop_(); 
-C51 COMPILER V9.53.0.0   MAIN                                                              11/23/2019 01:04:49 PAGE 2   
+   2          #include "WS2812B_RGB_Driver.h"
+   3          
+   4          void main()
+   5          {
+   6   1        unsigned char xdata Line_1[3*16];
+   7   1        unsigned char xdata Line_2[3*16];
+   8   1        unsigned char Number = 0;
+   9   1        unsigned char bit_flag = 0;
+  10   1      
+  11   1        P5M0 = 0xFF;
+  12   1        P5M1 = 0x00;  
+  13   1        
+  14   1        for(Number = 0; Number < 3*16; Number ++)
+  15   1        {
+  16   2          Line_1[ Number ] = 0xff;
+  17   2          Line_2[ Number ] = 0xff;
+  18   2        }
+  19   1        
+  20   1        setRGB( Line_1 , 0, 0, 0  , 0   );
+  21   1        setRGB( Line_2 , 1, 0  , 0, 0   );
+  22   1        
+  23   1        while(1)
+  24   1        {
+  25   2          Number ++ ;
+  26   2          
+  27   2          if(bit_flag)
+  28   2          {
+  29   3      //      setRGB( Line_1 , 0, 0  , 0  , 0   );
+  30   3      //      setRGB( Line_1 , 1, 255, 255, 255 );
+  31   3      //      setRGB( Line_1 , 2, 0  , 0  , 0   );
+  32   3      //      setRGB( Line_1 , 3, 255, 255, 255 );
+  33   3      //      setRGB( Line_1 , 4, 0  , 0  , 0   );
+  34   3      //      setRGB( Line_1 , 5, 255, 255, 255 );
+  35   3      //      setRGB( Line_1 , 6, 0  , 0  , 0   );
+  36   3      //      setRGB( Line_1 , 7, 255, 255, 255 );
+  37   3      //      setRGB( Line_1 , 8, 0  , 0  , 0   );
+  38   3      //      setRGB( Line_1 , 9, 255, 255, 255 );
+  39   3      //      setRGB( Line_1 ,10, 0  , 0  , 0   );
+  40   3      //      setRGB( Line_1 ,11, 255, 255, 255 );
+  41   3      //      setRGB( Line_1 ,12, 0  , 0  , 0   );
+  42   3      //      setRGB( Line_1 ,13, 255, 255, 255 );
+  43   3      //      setRGB( Line_1 ,14, 0  , 0  , 0   );
+  44   3      //      setRGB( Line_1 ,15, 255, 255, 255 );
+  45   3          }
+  46   2          else
+  47   2          {
+  48   3      //      setRGB( Line_1 , 0, 255, 255, 255 );
+  49   3      //      setRGB( Line_1 , 1, 0  , 0  , 0   );
+  50   3      //      setRGB( Line_1 , 2, 255, 255, 255 );
+  51   3      //      setRGB( Line_1 , 3, 0  , 0  , 0   );
+  52   3      //      setRGB( Line_1 , 4, 255, 255, 255 );
+  53   3      //      setRGB( Line_1 , 5, 0  , 0  , 0   );
+  54   3      //      setRGB( Line_1 , 6, 255, 255, 255 );
+C51 COMPILER V9.53.0.0   MAIN                                                              11/23/2019 15:13:51 PAGE 2   
 
-  55   3            WS2812_1 = 0;
-  56   3            _nop_(); 
-  57   3            _nop_(); 
-  58   3            _nop_();
-  59   3            _nop_(); 
-  60   3            _nop_(); 
-  61   3            _nop_(); 
-  62   3            _nop_(); 
-  63   3            _nop_(); 
-  64   3            _nop_();
-  65   3            WS2812_2 = 0; 
-  66   3            EA = 1;
-  67   3          }else
-  68   2          {
-  69   3            EA = 0;
-  70   3            WS2812_1 = 1;
-  71   3            WS2812_2 = 1;
-  72   3            _nop_(); 
-  73   3            _nop_(); 
-  74   3            _nop_(); 
-  75   3            _nop_(); 
-  76   3            _nop_();
-  77   3            _nop_(); 
-  78   3            _nop_(); 
-  79   3            _nop_(); 
-  80   3            _nop_(); 
-  81   3            _nop_(); 
-  82   3            _nop_();
-  83   3            WS2812_1 = 0;
-  84   3            WS2812_2 = 0; 
-  85   3            EA = 1;
-  86   3          }
-  87   2          value_1 <<= 1;
-  88   2          value_2 <<= 1;
-  89   2        }
-  90   1      }
-  91          
-  92          //复位码
-  93          void RGB_Rst()
-  94          {
-  95   1        WS2812_1 = 0;
-  96   1        WS2812_2 = 0;
-  97   1      }
-  98          
-  99          void delay50us(int t)   //@27.000MHz
- 100          {
- 101   1        int i, j;
- 102   1        for(i = 0; i < t; i ++)
- 103   1        {
- 104   2          for(j = 0; j < 144; j ++);
- 105   2        }
- 106   1      }
- 107          
- 108          
- 109          void setRGB(unsigned char *p,int Number, unsigned char G, unsigned char R, unsigned char B)
- 110          {
- 111   1        int value = 0;
- 112   1        value = 3*Number; 
- 113   1        p[ value + 0 ] = G;
- 114   1        p[ value + 1 ] = R;
- 115   1        p[ value + 2 ] = B;
- 116   1      }
-C51 COMPILER V9.53.0.0   MAIN                                                              11/23/2019 01:04:49 PAGE 3   
-
- 117          
- 118          void waterfall_light(unsigned char *Line_1, unsigned char *Line_2, int Number)
- 119          {
- 120   1        int i;
- 121   1        for(i = 0; i < Number; i ++)
- 122   1        {
- 123   2          Send_2811_24bits( Line_1, Line_2, i );
- 124   2        }
- 125   1        RGB_Rst();
- 126   1      }
- 127          
- 128          
- 129          void main()
- 130          {
- 131   1        unsigned char xdata Line_1[3*16];
- 132   1        unsigned char xdata Line_2[3*16];
- 133   1        unsigned char Number = 0;
- 134   1        unsigned char bit_flag = 0;
- 135   1      
- 136   1        P5M0 = 0xFF;
- 137   1        P5M1 = 0x00;  
- 138   1        
- 139   1        for(Number = 0; Number < 3*16; Number ++)
- 140   1        {
- 141   2          Line_1[ Number ] = 0xff;
- 142   2          Line_2[ Number ] = 0xff;
- 143   2        }
- 144   1        
- 145   1        setRGB( Line_1 , 0, 0, 0  , 0   );
- 146   1        setRGB( Line_2 , 1, 0  , 0, 0   );
- 147   1        
- 148   1        while(1)
- 149   1        {
- 150   2          Number ++ ;
- 151   2          
- 152   2          if(bit_flag)
- 153   2          {
- 154   3            setRGB( Line_1 , 0, 0  , 0  , 0   );
- 155   3            setRGB( Line_1 , 1, 255, 255, 255 );
- 156   3            setRGB( Line_1 , 2, 0  , 0  , 0   );
- 157   3            setRGB( Line_1 , 3, 255, 255, 255 );
- 158   3            setRGB( Line_1 , 4, 0  , 0  , 0   );
- 159   3            setRGB( Line_1 , 5, 255, 255, 255 );
- 160   3            setRGB( Line_1 , 6, 0  , 0  , 0   );
- 161   3            setRGB( Line_1 , 7, 255, 255, 255 );
- 162   3            setRGB( Line_1 , 8, 0  , 0  , 0   );
- 163   3            setRGB( Line_1 , 9, 255, 255, 255 );
- 164   3            setRGB( Line_1 ,10, 0  , 0  , 0   );
- 165   3            setRGB( Line_1 ,11, 255, 255, 255 );
- 166   3            setRGB( Line_1 ,12, 0  , 0  , 0   );
- 167   3            setRGB( Line_1 ,13, 255, 255, 255 );
- 168   3            setRGB( Line_1 ,14, 0  , 0  , 0   );
- 169   3            setRGB( Line_1 ,15, 255, 255, 255 );
- 170   3          }
- 171   2          else
- 172   2          {
- 173   3            setRGB( Line_1 , 0, 255, 255, 255 );
- 174   3            setRGB( Line_1 , 1, 0  , 0  , 0   );
- 175   3            setRGB( Line_1 , 2, 255, 255, 255 );
- 176   3            setRGB( Line_1 , 3, 0  , 0  , 0   );
- 177   3            setRGB( Line_1 , 4, 255, 255, 255 );
- 178   3            setRGB( Line_1 , 5, 0  , 0  , 0   );
-C51 COMPILER V9.53.0.0   MAIN                                                              11/23/2019 01:04:49 PAGE 4   
-
- 179   3            setRGB( Line_1 , 6, 255, 255, 255 );
- 180   3            setRGB( Line_1 , 7, 0  , 0  , 0   );
- 181   3            setRGB( Line_1 , 8, 255, 255, 255 );
- 182   3            setRGB( Line_1 , 9, 0  , 0  , 0   );
- 183   3            setRGB( Line_1 ,10, 255, 255, 255 );
- 184   3            setRGB( Line_1 ,11, 0  , 0  , 0   );
- 185   3            setRGB( Line_1 ,12, 255, 255, 255 );
- 186   3            setRGB( Line_1 ,13, 0  , 0  , 0   );
- 187   3            setRGB( Line_1 ,14, 255, 255, 255 );
- 188   3            setRGB( Line_1 ,15, 0  , 0  , 0   );
- 189   3          }
- 190   2          bit_flag = ~bit_flag;
- 191   2          
- 192   2      //    setRGB( Line_1 , Number % 8, Number, Number, Number );
- 193   2      //    setRGB( Line_2 , Number % 8, 256 - Number, 256 -Number, Number );
- 194   2          waterfall_light( Line_1, Line_2, 3 * 16 );
- 195   2          delay50us(5);                 //@27.000MHz
- 196   2        }
- 197   1      }
- 198          
- 199          
- 200          
- 201          
- 202          
- 203          
- 204          
- 205          
- 206          
- 207          
- 208          
- 209          
- 210          
+  55   3      //      setRGB( Line_1 , 7, 0  , 0  , 0   );
+  56   3      //      setRGB( Line_1 , 8, 255, 255, 255 );
+  57   3      //      setRGB( Line_1 , 9, 0  , 0  , 0   );
+  58   3      //      setRGB( Line_1 ,10, 255, 255, 255 );
+  59   3      //      setRGB( Line_1 ,11, 0  , 0  , 0   );
+  60   3      //      setRGB( Line_1 ,12, 255, 255, 255 );
+  61   3      //      setRGB( Line_1 ,13, 0  , 0  , 0   );
+  62   3      //      setRGB( Line_1 ,14, 255, 255, 255 );
+  63   3      //      setRGB( Line_1 ,15, 0  , 0  , 0   );
+  64   3          }
+  65   2          bit_flag = ~bit_flag;
+  66   2          
+  67   2      //    setRGB( Line_1 , Number % 8, Number, Number, Number );
+  68   2      //    setRGB( Line_2 , Number % 8, 256 - Number, 256 -Number, Number );
+  69   2          waterfall_light( Line_1, Line_2, 3 * 16 );
+  70   2          delay50us(5);                 //@27.000MHz
+  71   2        }
+  72   1      }
+  73          
+  74          
+  75          
+  76          
+  77          
+  78          
+  79          
+  80          
+  81          
+  82          
+  83          
+  84          
+  85          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    885    ----
+   CODE SIZE        =    122    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----      96
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      28
+   DATA SIZE        =   ----       2
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
