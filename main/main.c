@@ -43,8 +43,6 @@ void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int
 			_nop_(); 
 			_nop_(); 
 			_nop_();
-			_nop_();
-			_nop_();
 			WS2812_1 = 0; 
 			EA = 1;
 		}else if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) != 0x80 )  )
@@ -64,8 +62,6 @@ void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int
 			_nop_(); 
 			_nop_(); 
 			_nop_();
-			_nop_();
-			_nop_();
 			WS2812_2 = 0; 
 			EA = 1;
 		}else
@@ -83,8 +79,6 @@ void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int
 			_nop_(); 
 			_nop_(); 
 			_nop_(); 
-			_nop_();
-			_nop_();
 			_nop_();
 			WS2812_1 = 0;
 			WS2812_2 = 0; 
@@ -134,8 +128,8 @@ void waterfall_light(unsigned char *Line_1, unsigned char *Line_2, int Number)
 
 void main()
 {
-	unsigned char xdata Line_1[3*8];
-	unsigned char xdata Line_2[3*8];
+	unsigned char xdata Line_1[3*16];
+	unsigned char xdata Line_2[3*16];
 	unsigned char Number = 0;
 	unsigned char bit_flag = 0;
 
@@ -159,17 +153,45 @@ void main()
 		{
 			setRGB( Line_1 , 0, 0  , 0  , 0   );
 			setRGB( Line_1 , 1, 255, 255, 255 );
+			setRGB( Line_1 , 2, 0  , 0  , 0   );
+			setRGB( Line_1 , 3, 255, 255, 255 );
+			setRGB( Line_1 , 4, 0  , 0  , 0   );
+			setRGB( Line_1 , 5, 255, 255, 255 );
+			setRGB( Line_1 , 6, 0  , 0  , 0   );
+			setRGB( Line_1 , 7, 255, 255, 255 );
+			setRGB( Line_1 , 8, 0  , 0  , 0   );
+			setRGB( Line_1 , 9, 255, 255, 255 );
+			setRGB( Line_1 ,10, 0  , 0  , 0   );
+			setRGB( Line_1 ,11, 255, 255, 255 );
+			setRGB( Line_1 ,12, 0  , 0  , 0   );
+			setRGB( Line_1 ,13, 255, 255, 255 );
+			setRGB( Line_1 ,14, 0  , 0  , 0   );
+			setRGB( Line_1 ,15, 255, 255, 255 );
 		}
 		else
 		{
 			setRGB( Line_1 , 0, 255, 255, 255 );
 			setRGB( Line_1 , 1, 0  , 0  , 0   );
+			setRGB( Line_1 , 2, 255, 255, 255 );
+			setRGB( Line_1 , 3, 0  , 0  , 0   );
+			setRGB( Line_1 , 4, 255, 255, 255 );
+			setRGB( Line_1 , 5, 0  , 0  , 0   );
+			setRGB( Line_1 , 6, 255, 255, 255 );
+			setRGB( Line_1 , 7, 0  , 0  , 0   );
+			setRGB( Line_1 , 8, 255, 255, 255 );
+			setRGB( Line_1 , 9, 0  , 0  , 0   );
+			setRGB( Line_1 ,10, 255, 255, 255 );
+			setRGB( Line_1 ,11, 0  , 0  , 0   );
+			setRGB( Line_1 ,12, 255, 255, 255 );
+			setRGB( Line_1 ,13, 0  , 0  , 0   );
+			setRGB( Line_1 ,14, 255, 255, 255 );
+			setRGB( Line_1 ,15, 0  , 0  , 0   );
 		}
 		bit_flag = ~bit_flag;
 		
 //		setRGB( Line_1 , Number % 8, Number, Number, Number );
 //		setRGB( Line_2 , Number % 8, 256 - Number, 256 -Number, Number );
-		waterfall_light( Line_1, Line_2, 3 * 8 );
+		waterfall_light( Line_1, Line_2, 3 * 16 );
 		delay50us(5);									//@27.000MHz
 	}
 }
