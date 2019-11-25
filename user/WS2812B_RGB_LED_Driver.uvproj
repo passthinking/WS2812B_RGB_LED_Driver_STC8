@@ -206,7 +206,7 @@
             <Mode2>0</Mode2>
             <useCB>0</useCB>
             <useXB>0</useXB>
-            <useL251>0</useL251>
+            <useL251>1</useL251>
             <useA251>0</useA251>
             <Mx51>0</Mx51>
             <ModC812>0</ModC812>
@@ -347,7 +347,7 @@
             <WarningLevel>2</WarningLevel>
             <DataOverlaying>1</DataOverlaying>
             <OverlayString></OverlayString>
-            <MiscControls></MiscControls>
+            <MiscControls>removeunused</MiscControls>
             <DisableWarningNumbers></DisableWarningNumbers>
             <LinkerCmdFile></LinkerCmdFile>
             <Assign></Assign>
@@ -390,6 +390,16 @@
               <FileName>WS2812B_RGB_Driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\library\WS2812B_RGB_Driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>STC8_TIMER2_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\STC8_TIMER2_UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>CircularQueue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\CircularQueue.c</FilePath>
             </File>
           </Files>
         </Group>

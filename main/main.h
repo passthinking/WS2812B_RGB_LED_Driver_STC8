@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include <math.h>
 
+#define FOSC  27000000UL
+
+
 
 
 

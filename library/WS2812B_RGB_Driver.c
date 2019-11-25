@@ -17,22 +17,21 @@ void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int
 	unsigned char value_1,value_2,j;
 	value_1 = Line_1[n];
 	value_2 = Line_2[n];
+	
 	for(j = 0; j < 8; j ++)
 	{
+		EA = 0;
 		//0码，高电平850ns 低电平400ns 误差正负150ns
 		if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 ) )
 		{
-			EA = 0;
 			WS2812_1 = 1;
 			WS2812_2 = 1;
 			_nop_();
 			_nop_();
 			WS2812_1 = 0;
 			WS2812_2 = 0;
-			EA = 1;
 		}else if( ( ( value_1 & 0x80 ) != 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 )  )
 		{
-			EA = 0;
 			WS2812_1 = 1;
 			WS2812_2 = 1;
 			_nop_(); 
@@ -48,10 +47,8 @@ void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int
 			_nop_(); 
 			_nop_();
 			WS2812_1 = 0; 
-			EA = 1;
 		}else if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) != 0x80 )  )
 		{
-			EA = 0;
 			WS2812_1 = 1;
 			WS2812_2 = 1;
 			_nop_(); 
@@ -67,10 +64,8 @@ void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int
 			_nop_(); 
 			_nop_();
 			WS2812_2 = 0; 
-			EA = 1;
 		}else
 		{
-			EA = 0;
 			WS2812_1 = 1;
 			WS2812_2 = 1;
 			_nop_(); 
@@ -86,11 +81,12 @@ void Send_2811_24bits(unsigned char *Line_1, unsigned char *Line_2, unsigned int
 			_nop_();
 			WS2812_1 = 0;
 			WS2812_2 = 0; 
-			EA = 1;
 		}
 		value_1 <<= 1;
 		value_2 <<= 1;
+		EA = 1;
 	}
+	
 }
 
 

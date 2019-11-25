@@ -1,10 +1,10 @@
-C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/23/2019 15:14:31 PAGE 1   
+C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/24/2019 19:36:03 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE WS2812B_RGB_DRIVER
 OBJECT MODULE PLACED IN ..\obj\WS2812B_RGB_Driver.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\WS2812B_RGB_Driver.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\main;
-                    -..\library) DEBUG OBJECTEXTEND PRINT(..\obj\WS2812B_RGB_Driver.lst) TABS(2) OBJECT(..\obj\WS2812B_RGB_Driver.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\WS2812B_RGB_Driver.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\
+                    -main;..\library) DEBUG PRINT(..\obj\WS2812B_RGB_Driver.lst) TABS(2) OBJECT(..\obj\WS2812B_RGB_Driver.obj)
 
 line level    source
 
@@ -27,127 +27,127 @@ line level    source
   17   1        unsigned char value_1,value_2,j;
   18   1        value_1 = Line_1[n];
   19   1        value_2 = Line_2[n];
-  20   1        for(j = 0; j < 8; j ++)
-  21   1        {
-  22   2          //0码，高电平850ns 低电平400ns 误差正负150ns
-  23   2          if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 ) )
-  24   2          {
-  25   3            EA = 0;
-  26   3            WS2812_1 = 1;
-  27   3            WS2812_2 = 1;
-  28   3            _nop_();
+  20   1        
+  21   1        for(j = 0; j < 8; j ++)
+  22   1        {
+  23   2          EA = 0;
+  24   2          //0码，高电平850ns 低电平400ns 误差正负150ns
+  25   2          if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 ) )
+  26   2          {
+  27   3            WS2812_1 = 1;
+  28   3            WS2812_2 = 1;
   29   3            _nop_();
-  30   3            WS2812_1 = 0;
-  31   3            WS2812_2 = 0;
-  32   3            EA = 1;
+  30   3            _nop_();
+  31   3            WS2812_1 = 0;
+  32   3            WS2812_2 = 0;
   33   3          }else if( ( ( value_1 & 0x80 ) != 0x80 ) && ( ( value_2 & 0x80 ) == 0x80 )  )
   34   2          {
-  35   3            EA = 0;
-  36   3            WS2812_1 = 1;
-  37   3            WS2812_2 = 1;
+  35   3            WS2812_1 = 1;
+  36   3            WS2812_2 = 1;
+  37   3            _nop_(); 
   38   3            _nop_(); 
-  39   3            _nop_(); 
-  40   3            WS2812_2 = 0;
+  39   3            WS2812_2 = 0;
+  40   3            _nop_(); 
   41   3            _nop_(); 
-  42   3            _nop_(); 
-  43   3            _nop_();
+  42   3            _nop_();
+  43   3            _nop_(); 
   44   3            _nop_(); 
   45   3            _nop_(); 
   46   3            _nop_(); 
   47   3            _nop_(); 
-  48   3            _nop_(); 
-  49   3            _nop_();
-  50   3            WS2812_1 = 0; 
-  51   3            EA = 1;
-  52   3          }else if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) != 0x80 )  )
-  53   2          {
-  54   3            EA = 0;
-C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/23/2019 15:14:31 PAGE 2   
+  48   3            _nop_();
+  49   3            WS2812_1 = 0; 
+  50   3          }else if( ( ( value_1 & 0x80 ) == 0x80 ) && ( ( value_2 & 0x80 ) != 0x80 )  )
+  51   2          {
+  52   3            WS2812_1 = 1;
+  53   3            WS2812_2 = 1;
+  54   3            _nop_(); 
+C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/24/2019 19:36:03 PAGE 2   
 
-  55   3            WS2812_1 = 1;
-  56   3            WS2812_2 = 1;
+  55   3            _nop_(); 
+  56   3            WS2812_1 = 0;
   57   3            _nop_(); 
   58   3            _nop_(); 
-  59   3            WS2812_1 = 0;
+  59   3            _nop_();
   60   3            _nop_(); 
   61   3            _nop_(); 
-  62   3            _nop_();
+  62   3            _nop_(); 
   63   3            _nop_(); 
   64   3            _nop_(); 
-  65   3            _nop_(); 
-  66   3            _nop_(); 
-  67   3            _nop_(); 
-  68   3            _nop_();
-  69   3            WS2812_2 = 0; 
-  70   3            EA = 1;
-  71   3          }else
-  72   2          {
-  73   3            EA = 0;
-  74   3            WS2812_1 = 1;
-  75   3            WS2812_2 = 1;
+  65   3            _nop_();
+  66   3            WS2812_2 = 0; 
+  67   3          }else
+  68   2          {
+  69   3            WS2812_1 = 1;
+  70   3            WS2812_2 = 1;
+  71   3            _nop_(); 
+  72   3            _nop_(); 
+  73   3            _nop_(); 
+  74   3            _nop_(); 
+  75   3            _nop_();
   76   3            _nop_(); 
   77   3            _nop_(); 
   78   3            _nop_(); 
   79   3            _nop_(); 
-  80   3            _nop_();
-  81   3            _nop_(); 
-  82   3            _nop_(); 
-  83   3            _nop_(); 
-  84   3            _nop_(); 
-  85   3            _nop_(); 
-  86   3            _nop_();
-  87   3            WS2812_1 = 0;
-  88   3            WS2812_2 = 0; 
-  89   3            EA = 1;
-  90   3          }
-  91   2          value_1 <<= 1;
-  92   2          value_2 <<= 1;
-  93   2        }
-  94   1      }
-  95          
-  96          
-  97          void delay50us(int t)   //@27.000MHz
-  98          {
-  99   1        int i, j;
- 100   1        for(i = 0; i < t; i ++)
- 101   1        {
- 102   2          for(j = 0; j < 144; j ++);
- 103   2        }
- 104   1      }
- 105          
- 106          
- 107          void setRGB(unsigned char *p,int Number, unsigned char G, unsigned char R, unsigned char B)
- 108          {
- 109   1        int value = 0;
- 110   1        value = 3*Number; 
- 111   1        p[ value + 0 ] = G;
- 112   1        p[ value + 1 ] = R;
- 113   1        p[ value + 2 ] = B;
- 114   1      }
- 115          
- 116          void waterfall_light(unsigned char *Line_1, unsigned char *Line_2, int Number)
-C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/23/2019 15:14:31 PAGE 3   
+  80   3            _nop_(); 
+  81   3            _nop_();
+  82   3            WS2812_1 = 0;
+  83   3            WS2812_2 = 0; 
+  84   3          }
+  85   2          value_1 <<= 1;
+  86   2          value_2 <<= 1;
+  87   2          EA = 1;
+  88   2        }
+  89   1        
+  90   1      }
+  91          
+  92          
+  93          void delay50us(int t)   //@27.000MHz
+  94          {
+  95   1        int i, j;
+  96   1        for(i = 0; i < t; i ++)
+  97   1        {
+  98   2          for(j = 0; j < 144; j ++);
+  99   2        }
+ 100   1      }
+ 101          
+ 102          
+ 103          void setRGB(unsigned char *p,int Number, unsigned char G, unsigned char R, unsigned char B)
+ 104          {
+ 105   1        int value = 0;
+ 106   1        value = 3*Number; 
+ 107   1        p[ value + 0 ] = G;
+ 108   1        p[ value + 1 ] = R;
+ 109   1        p[ value + 2 ] = B;
+ 110   1      }
+ 111          
+ 112          void waterfall_light(unsigned char *Line_1, unsigned char *Line_2, int Number)
+ 113          {
+ 114   1        int i;
+ 115   1        for(i = 0; i < Number; i ++)
+ 116   1        {
+C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/24/2019 19:36:03 PAGE 3   
 
- 117          {
- 118   1        int i;
- 119   1        for(i = 0; i < Number; i ++)
- 120   1        {
- 121   2          Send_2811_24bits( Line_1, Line_2, i );
- 122   2        }
- 123   1        RGB_Rst();
- 124   1      }
- 125          
- 126          
+ 117   2          Send_2811_24bits( Line_1, Line_2, i );
+ 118   2        }
+ 119   1        RGB_Rst();
+ 120   1      }
+ 121          
+ 122          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    299    ----
+   CODE SIZE        =    291    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----      26
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.
 
 

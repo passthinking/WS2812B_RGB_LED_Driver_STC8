@@ -1,13 +1,25 @@
 #include "main.h"
 #include "WS2812B_RGB_Driver.h"
+#include "STC8_TIMER2_UART.h"
+#include "CircularQueue.h"
+
+unsigned char xdata Line_1[3*16];
+unsigned char xdata Line_2[3*16];
+
+unsigned char xdata circularQueueBuff[CircularQueueLength];
 
 void main()
 {
-	unsigned char xdata Line_1[3*16];
-	unsigned char xdata Line_2[3*16];
 	unsigned char Number = 0;
-	unsigned char bit_flag = 0;
+	unsigned char count3 = 0;
+	unsigned char RGBBuff[3];
 
+	unsigned char ch_value = 0;
+	
+	unsigned int i = 0;
+	unsigned int length = 0;
+
+	initTimer2_UART();
 	P5M0 = 0xFF;
 	P5M1 = 0x00;	
 	
@@ -20,64 +32,59 @@ void main()
 	setRGB( Line_1 , 0, 0, 0  , 0   );
 	setRGB( Line_2 , 1, 0  , 0, 0   );
 	
+	Uaurt1_Send_String("start up ...");
+	
 	while(1)
 	{
-		Number ++ ;
-		
-		if(bit_flag)
-		{
-//			setRGB( Line_1 , 0, 0  , 0  , 0   );
-//			setRGB( Line_1 , 1, 255, 255, 255 );
-//			setRGB( Line_1 , 2, 0  , 0  , 0   );
-//			setRGB( Line_1 , 3, 255, 255, 255 );
-//			setRGB( Line_1 , 4, 0  , 0  , 0   );
-//			setRGB( Line_1 , 5, 255, 255, 255 );
-//			setRGB( Line_1 , 6, 0  , 0  , 0   );
-//			setRGB( Line_1 , 7, 255, 255, 255 );
-//			setRGB( Line_1 , 8, 0  , 0  , 0   );
-//			setRGB( Line_1 , 9, 255, 255, 255 );
-//			setRGB( Line_1 ,10, 0  , 0  , 0   );
-//			setRGB( Line_1 ,11, 255, 255, 255 );
-//			setRGB( Line_1 ,12, 0  , 0  , 0   );
-//			setRGB( Line_1 ,13, 255, 255, 255 );
-//			setRGB( Line_1 ,14, 0  , 0  , 0   );
-//			setRGB( Line_1 ,15, 255, 255, 255 );
-		}
-		else
-		{
-//			setRGB( Line_1 , 0, 255, 255, 255 );
-//			setRGB( Line_1 , 1, 0  , 0  , 0   );
-//			setRGB( Line_1 , 2, 255, 255, 255 );
-//			setRGB( Line_1 , 3, 0  , 0  , 0   );
-//			setRGB( Line_1 , 4, 255, 255, 255 );
-//			setRGB( Line_1 , 5, 0  , 0  , 0   );
-//			setRGB( Line_1 , 6, 255, 255, 255 );
-//			setRGB( Line_1 , 7, 0  , 0  , 0   );
-//			setRGB( Line_1 , 8, 255, 255, 255 );
-//			setRGB( Line_1 , 9, 0  , 0  , 0   );
-//			setRGB( Line_1 ,10, 255, 255, 255 );
-//			setRGB( Line_1 ,11, 0  , 0  , 0   );
-//			setRGB( Line_1 ,12, 255, 255, 255 );
-//			setRGB( Line_1 ,13, 0  , 0  , 0   );
-//			setRGB( Line_1 ,14, 255, 255, 255 );
-//			setRGB( Line_1 ,15, 0  , 0  , 0   );
-		}
-		bit_flag = ~bit_flag;
-		
-//		setRGB( Line_1 , Number % 8, Number, Number, Number );
-//		setRGB( Line_2 , Number % 8, 256 - Number, 256 -Number, Number );
 		waterfall_light( Line_1, Line_2, 3 * 16 );
 		delay50us(5);									//@27.000MHz
+		
+		length = get_DataLength();
+		for( i = 0; i < length; i ++ )
+		{
+			if( get_Data_CircularQueue( &ch_value ) > 0 )
+			{
+			
+				RGBBuff[count3] = ch_value;
+				count3 ++;
+				if(count3 >= 3)
+				{
+					count3 = 0;
+				}
+				
+				for(Number = 0; Number < 16; Number ++)
+				{
+					setRGB( Line_1 , Number, RGBBuff[0], RGBBuff[1], RGBBuff[2] );
+					setRGB( Line_2 , Number, RGBBuff[0], RGBBuff[1], RGBBuff[2] );
+				} 
+				
+//				if(ch_value == "0")
+//				{
+//					for(Number = 0; Number < 3*16; Number ++)
+//					{
+//						Line_1[ Number ] = 0xff;
+//						Line_2[ Number ] = 0xff;
+//					}
+//				}
+//				else
+//				{
+//					for(Number = 0; Number < 3*16; Number ++)
+//					{
+//						Line_1[ Number ] = 0x00;
+//						Line_2[ Number ] = 0x00;
+//					}
+//				}
+				UART1_Send( ch_value );
+			}
+		}
 	}
 }
 
 
-
-
-
-
-
-
+void Uart1_Receiver_Data_CallBuck(unsigned char ch)
+{
+	add_Data_CircularQueue(ch);
+}
 
 
 
