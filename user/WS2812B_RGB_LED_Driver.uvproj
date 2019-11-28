@@ -401,6 +401,11 @@
               <FileType>1</FileType>
               <FilePath>..\library\CircularQueue.c</FilePath>
             </File>
+            <File>
+              <FileName>TransmissionCommuicationProtcol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\TransmissionCommuicationProtcol.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

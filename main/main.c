@@ -28,15 +28,22 @@ void main()
 	}
 	Uaurt1_Send_String("start up ...");
 	
+	Number = 0;
+	
 	while(1)
 	{
 		waterfall_light( Line_1, Line_2, 3 * 16 );
-		delay50us(5);									//@27.000MHz
+		delay50us(5);															//@27.000MHz
 		length = get_DataLength();
 		for( i = 0; i < length; i ++ )
 		{
 			if( get_Data_CircularQueue( &ch_value ) > 0 )
 			{
+				Line_1[ Number ] = ch_value;
+				Line_2[ Number ] = ch_value;
+				
+				Number ++;
+				if( Number >= 3*16 ) Number = 0;
 				
 				UART1_Send( ch_value );
 			}
