@@ -1,10 +1,10 @@
-C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/27/2019 14:37:06 PAGE 1   
+C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/29/2019 09:08:41 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE WS2812B_RGB_DRIVER
 OBJECT MODULE PLACED IN ..\obj\WS2812B_RGB_Driver.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\WS2812B_RGB_Driver.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\
-                    -main;..\library) DEBUG PRINT(..\obj\WS2812B_RGB_Driver.lst) TABS(2) OBJECT(..\obj\WS2812B_RGB_Driver.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\WS2812B_RGB_Driver.c OMF2 BROWSE INCDIR(..\main;..\library) D
+                    -EBUG PRINT(..\obj\WS2812B_RGB_Driver.lst) TABS(2) OBJECT(..\obj\WS2812B_RGB_Driver.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   52   3            WS2812_1 = 1;
   53   3            WS2812_2 = 1;
   54   3            _nop_(); 
-C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/27/2019 14:37:06 PAGE 2   
+C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/29/2019 09:08:41 PAGE 2   
 
   55   3            _nop_(); 
   56   3            WS2812_1 = 0;
@@ -126,7 +126,7 @@ line level    source
  114   1        int i;
  115   1        for(i = 0; i < Number; i ++)
  116   1        {
-C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/27/2019 14:37:06 PAGE 3   
+C51 COMPILER V9.53.0.0   WS2812B_RGB_DRIVER                                                11/29/2019 09:08:41 PAGE 3   
 
  117   2          Send_2811_24bits( Line_1, Line_2, i );
  118   2        }

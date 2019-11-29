@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.30.0                                                          11/28/2019  21:49:50  PAGE 1
+LX51 LINKER/LOCATER V4.66.30.0                                                          11/29/2019  09:09:50  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.30.0, INVOKED BY:
@@ -67,7 +67,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000000H   000002H   000003H   ---    OFFS..   CODE           ?CO??C_STARTUP?0
 000003H   000019H   000017H   BYTE   UNIT     CODE           ?PR?INITTIMER2_UART?STC8_TIMER2_UART
 00001AH   000021H   000008H   BYTE   UNIT     CODE           ?PR?_UART1_SEND?STC8_TIMER2_UART
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 2
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 2
 
 
 000022H   000022H   000001H   ---    ---      **GAP**
@@ -135,7 +135,7 @@ _UAURT1_SEND_STRING/STC8_TIMER2_UART       ----- -----  ----- -----
   +--> _UART1_SEND/STC8_TIMER2_UART
 
 _UART1_SEND/STC8_TIMER2_UART               ----- -----  ----- -----
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 3
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 3
 
 
 
@@ -203,7 +203,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
 *SFR* 000000FDH   DATA     BYTE      CCAP3H
 *SFR* 000000EDH   DATA     BYTE      CCAP3L
 *SFR* 000000DAH   DATA     BYTE      CCAPM0
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 4
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 4
 
 
 *SFR* 000000DBH   DATA     BYTE      CCAPM1
@@ -271,7 +271,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
 *SFR* 000000D0H.2 DATA     BIT       OV
 *SFR* 000000D0H   DATA     BIT       P
 *SFR* 00000080H   DATA     BYTE      P0
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 5
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 5
 
 
 *SFR* 00000080H   DATA     BIT       P00
@@ -339,7 +339,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
 *SFR* 000000C8H.7 DATA     BIT       P57
 *SFR* 000000CAH   DATA     BYTE      P5M0
 *SFR* 000000C9H   DATA     BYTE      P5M1
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 6
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 6
 
 
 *SFR* 000000E8H   DATA     BYTE      P6
@@ -407,7 +407,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
 *SFR* 00000081H   DATA     BYTE      SP
 *SFR* 000000CEH   DATA     BYTE      SPCTL
 *SFR* 000000CFH   DATA     BYTE      SPDAT
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 7
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 7
 
 
 *SFR* 000000CDH   DATA     BYTE      SPSTAT
@@ -475,7 +475,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000B0H   SFRSYM    DATA     BYTE      P3
       000000CCH   SFRSYM    DATA     BYTE      P6M0
       000000C9H   SFRSYM    DATA     BYTE      P5M1
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 8
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 8
 
 
       000000C0H   SFRSYM    DATA     BYTE      P4
@@ -543,7 +543,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000BCH   SFRSYM    DATA     BYTE      ADC_CONTR
       00000099H   SFRSYM    DATA     BYTE      SBUF
       00000087H   SFRSYM    DATA     BYTE      PCON
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 9
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 9
 
 
       00000090H   SFRSYM    DATA     BIT       P10
@@ -611,7 +611,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000C0H.7 SFRSYM    DATA     BIT       P47
       000000F8H.5 SFRSYM    DATA     BIT       P75
       000000E8H.6 SFRSYM    DATA     BIT       P66
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 10
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 10
 
 
       000000C8H.7 SFRSYM    DATA     BIT       P57
@@ -679,7 +679,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000D1H   SFRSYM    DATA     BYTE      T4T3M
       000000BEH   SFRSYM    DATA     BYTE      ADC_RESL
       00000082H   SFRSYM    DATA     BYTE      DPL
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 11
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 11
 
 
       000000CDH   SFRSYM    DATA     BYTE      SPSTAT
@@ -747,7 +747,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       ---         BLOCKEND  ---      ---       LVL=0
 
       010003F7H   BLOCK     CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 12
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 12
 
 
       00000007H   SYMBOL    DATA     BYTE      ch
@@ -815,7 +815,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000EAH   SFRSYM    DATA     BYTE      CCAP0L
       000000D8H.6 SFRSYM    DATA     BIT       CR
       000000AEH   SFRSYM    DATA     BYTE      TA
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 13
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 13
 
 
       000000F7H   SFRSYM    DATA     BYTE      PWMFDCR
@@ -883,7 +883,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       00000090H.5 SFRSYM    DATA     BIT       P15
       00000080H.6 SFRSYM    DATA     BIT       P06
       000000B8H.6 SFRSYM    DATA     BIT       PLVD
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 14
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 14
 
 
       000000F8H   SFRSYM    DATA     BIT       P70
@@ -951,7 +951,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000D4H   SFRSYM    DATA     BYTE      T3H
       000000D0H   SFRSYM    DATA     BIT       P
       00000098H.7 SFRSYM    DATA     BIT       SM0
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 15
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 15
 
 
       000000D2H   SFRSYM    DATA     BYTE      TH4
@@ -1019,7 +1019,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
 
       01000203H   BLOCK     CODE     ---       LVL=0
       00000001H   SYMBOL    DATA     ---       Line_1
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 16
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 16
 
 
       0000001BH   SYMBOL    DATA     ---       Line_2
@@ -1087,7 +1087,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       0100026FH   LINE      CODE     ---       #73
       01000270H   LINE      CODE     ---       #74
       01000271H   LINE      CODE     ---       #75
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 17
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 17
 
 
       01000272H   LINE      CODE     ---       #76
@@ -1155,7 +1155,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000B2H   SFRSYM    DATA     BYTE      P3M0
       00000095H   SFRSYM    DATA     BYTE      P2M1
       00000090H   SFRSYM    DATA     BYTE      P1
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 18
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 18
 
 
       000000B4H   SFRSYM    DATA     BYTE      P4M0
@@ -1223,7 +1223,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000D9H   SFRSYM    DATA     BYTE      CMOD
       000000D8H   SFRSYM    DATA     BYTE      CCON
       000000C4H   SFRSYM    DATA     BYTE      IAP_ADDRL
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 19
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 19
 
 
       000000B8H.7 SFRSYM    DATA     BIT       PPCA
@@ -1291,7 +1291,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000A0H.7 SFRSYM    DATA     BIT       P27
       000000F8H.3 SFRSYM    DATA     BIT       P73
       000000E8H.4 SFRSYM    DATA     BIT       P64
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 20
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 20
 
 
       000000C8H.5 SFRSYM    DATA     BIT       P55
@@ -1359,7 +1359,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000C1H   SFRSYM    DATA     BYTE      WDT_CONTR
       000000B8H   SFRSYM    DATA     BIT       PX0
       000000B8H.2 SFRSYM    DATA     BIT       PX1
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 21
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 21
 
 
       000000F2H   SFRSYM    DATA     BYTE      PCA_PWM0
@@ -1427,7 +1427,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       00000007H   SYMBOL    DATA     CHAR      ch
       0100001AH   LINE      CODE     ---       #34
       0100001AH   LINE      CODE     ---       #35
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 22
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 22
 
 
       0100001AH   LINE      CODE     ---       #36
@@ -1495,7 +1495,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       0100037CH   LINE      CODE     ---       #39
       01000384H   LINE      CODE     ---       #40
       0100038DH   LINE      CODE     ---       #41
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 23
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 23
 
 
       0100038DH   LINE      CODE     ---       #42
@@ -1563,7 +1563,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000AEH   SFRSYM    DATA     BYTE      TA
       000000F7H   SFRSYM    DATA     BYTE      PWMFDCR
       000000EBH   SFRSYM    DATA     BYTE      CCAP1L
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 24
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 24
 
 
       000000DAH   SFRSYM    DATA     BYTE      CCAPM0
@@ -1631,7 +1631,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       000000B8H.6 SFRSYM    DATA     BIT       PLVD
       000000F8H   SFRSYM    DATA     BIT       P70
       000000E8H.1 SFRSYM    DATA     BIT       P61
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 25
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 25
 
 
       000000C8H.2 SFRSYM    DATA     BIT       P52
@@ -1699,7 +1699,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       00000098H.7 SFRSYM    DATA     BIT       SM0
       000000D2H   SFRSYM    DATA     BYTE      TH4
       000000D2H   SFRSYM    DATA     BYTE      T4H
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 26
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 26
 
 
       0000008AH   SFRSYM    DATA     BYTE      TL0
@@ -1767,7 +1767,7 @@ SYMBOL TABLE OF MODULE:  ..\obj\WS2812B全彩LED灯驱动 (MAIN)
       ---         MODULE    ---      ---       ?C?CSTPTR
       010001BDH   PUBLIC    CODE     ---       ?C?CSTPTR
 
-LX51 LINKER/LOCATER V4.66.30.0                                                        11/28/2019  21:49:50  PAGE 27
+LX51 LINKER/LOCATER V4.66.30.0                                                        11/29/2019  09:09:50  PAGE 27
 
 
       ---         MODULE    ---      ---       ?C?CSTOPTR
