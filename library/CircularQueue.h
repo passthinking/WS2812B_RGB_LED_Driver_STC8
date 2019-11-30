@@ -5,8 +5,7 @@
 
 #define CircularQueueLength  127 
 
-extern unsigned char xdata circularQueueBuff[CircularQueueLength];
-
+extern unsigned char xdata circularQueueBuff[ CircularQueueLength ];
 
 char add_Data_CircularQueue(unsigned char ch);
 char get_Data_CircularQueue(unsigned char *ch);

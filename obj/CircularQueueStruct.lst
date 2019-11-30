@@ -1,0 +1,76 @@
+C51 COMPILER V9.53.0.0   CIRCULARQUEUESTRUCT                                               11/29/2019 21:25:37 PAGE 1   
+
+
+C51 COMPILER V9.53.0.0, COMPILATION OF MODULE CIRCULARQUEUESTRUCT
+OBJECT MODULE PLACED IN ..\obj\CircularQueueStruct.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\CircularQueueStruct.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..
+                    -\main;..\library) DEBUG PRINT(..\obj\CircularQueueStruct.lst) TABS(2) OBJECT(..\obj\CircularQueueStruct.obj)
+
+line level    source
+
+   1          
+   2          #include "CircularQueueStruct.h"
+   3          
+   4          
+   5          char add_Data_CircularQueue_Struct( CircularQueue_t *circular, unsigned char ch)
+   6          {
+   7   1        if( ( circular->DataLength < circular->CircularQueueLength) && ( circular->DataLength >= 0 ) )
+   8   1        {
+   9   2          circular->circularQueueBuff[ circular->EndPointer ] = ch;
+  10   2          circular->DataLength ++;
+  11   2          circular->EndPointer ++;
+  12   2          if( circular->EndPointer >= circular->CircularQueueLength )
+  13   2          {
+  14   3            circular->EndPointer = 0;
+  15   3          }
+  16   2          return 1;
+  17   2        }
+  18   1        else
+  19   1        {
+  20   2          return -1;
+  21   2        }
+  22   1      }
+  23          
+  24          unsigned int get_DataLength_Struct( CircularQueue_t *circular)
+  25          {
+  26   1        return circular->DataLength ;
+  27   1      }
+  28          
+  29          char get_Data_CircularQueue_Struct( CircularQueue_t *circular,unsigned char *ch)
+  30          {
+  31   1        if( circular->DataLength > 0)
+  32   1        {
+  33   2          *ch = circular->circularQueueBuff[ circular->StartPointer ];
+  34   2          circular->DataLength --;
+  35   2          circular->StartPointer ++;
+  36   2          if( circular->StartPointer  >= circular->CircularQueueLength )
+  37   2          {
+  38   3            circular->StartPointer = 0;
+  39   3          }
+  40   2          return 1;
+  41   2        }
+  42   1        else
+  43   1        {
+  44   2          return -1;
+  45   2        };
+  46   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    256    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+C51 COMPILER V9.53.0.0   CIRCULARQUEUESTRUCT                                               11/29/2019 21:25:37 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

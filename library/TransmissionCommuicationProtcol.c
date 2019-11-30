@@ -11,6 +11,13 @@
 
 #include "TransmissionCommuicationProtcol.h"
 
+unsigned char xdata dataBuff[256];
+CircularQueue_t xdata dataBuff_Circular = { dataBuff, 256, 0, 0, 0 };
 
+
+void receiverDataLoop( unsigned char ch )
+{
+	
+}
 
 

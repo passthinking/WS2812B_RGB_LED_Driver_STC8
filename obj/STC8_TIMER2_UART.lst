@@ -1,10 +1,10 @@
-C51 COMPILER V9.53.0.0   STC8_TIMER2_UART                                                  11/29/2019 09:08:42 PAGE 1   
+C51 COMPILER V9.53.0.0   STC8_TIMER2_UART                                                  11/29/2019 21:15:37 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE STC8_TIMER2_UART
 OBJECT MODULE PLACED IN ..\obj\STC8_TIMER2_UART.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\STC8_TIMER2_UART.c OMF2 BROWSE INCDIR(..\main;..\library) DEB
-                    -UG PRINT(..\obj\STC8_TIMER2_UART.lst) TABS(2) OBJECT(..\obj\STC8_TIMER2_UART.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\STC8_TIMER2_UART.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\ma
+                    -in;..\library) DEBUG PRINT(..\obj\STC8_TIMER2_UART.lst) TABS(2) OBJECT(..\obj\STC8_TIMER2_UART.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   52          
 
 
-C51 COMPILER V9.53.0.0   STC8_TIMER2_UART                                                  11/29/2019 09:08:42 PAGE 2   
+C51 COMPILER V9.53.0.0   STC8_TIMER2_UART                                                  11/29/2019 21:15:37 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    126    ----

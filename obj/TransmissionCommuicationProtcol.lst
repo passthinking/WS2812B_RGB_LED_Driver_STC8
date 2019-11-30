@@ -1,11 +1,11 @@
-C51 COMPILER V9.53.0.0   TRANSMISSIONCOMMUICATIONPROTCOL                                   11/29/2019 09:09:50 PAGE 1   
+C51 COMPILER V9.53.0.0   TRANSMISSIONCOMMUICATIONPROTCOL                                   11/29/2019 21:41:29 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE TRANSMISSIONCOMMUICATIONPROTCOL
 OBJECT MODULE PLACED IN ..\obj\TransmissionCommuicationProtcol.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\TransmissionCommuicationProtcol.c OMF2 BROWSE INCDIR(..\main;
-                    -..\library) DEBUG PRINT(..\obj\TransmissionCommuicationProtcol.lst) TABS(2) OBJECT(..\obj\TransmissionCommuicationProtco
-                    -l.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\TransmissionCommuicationProtcol.c OMF2 OPTIMIZE(8,SPEED) BROW
+                    -SE INCDIR(..\main;..\library) DEBUG PRINT(..\obj\TransmissionCommuicationProtcol.lst) TABS(2) OBJECT(..\obj\Transmission
+                    -CommuicationProtcol.obj)
 
 line level    source
 
@@ -23,17 +23,25 @@ line level    source
   11          
   12          #include "TransmissionCommuicationProtcol.h"
   13          
-  14          
-  15          
+  14          unsigned char xdata dataBuff[256];
+  15          CircularQueue_t xdata dataBuff_Circular = { dataBuff, 256, 0, 0, 0 };
   16          
+  17          
+  18          void receiverDataLoop( unsigned char ch )
+  19          {
+  20   1      
+  21   1      }
+*** WARNING C280 IN LINE 18 OF ..\library\TransmissionCommuicationProtcol.c: 'ch': unreferenced local variable
+  22          
+  23          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   ----    ----
+   CODE SIZE        =      3    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   XDATA SIZE       =    267    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =   ----       1
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
@@ -43,4 +51,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

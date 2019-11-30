@@ -1,10 +1,10 @@
-C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     11/29/2019 09:08:42 PAGE 1   
+C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     11/29/2019 20:59:27 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE CIRCULARQUEUE
 OBJECT MODULE PLACED IN ..\obj\CircularQueue.obj
-COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\CircularQueue.c OMF2 BROWSE INCDIR(..\main;..\library) DEBUG 
-                    -PRINT(..\obj\CircularQueue.lst) TABS(2) OBJECT(..\obj\CircularQueue.obj)
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\library\CircularQueue.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\main;
+                    -..\library) DEBUG PRINT(..\obj\CircularQueue.lst) TABS(2) OBJECT(..\obj\CircularQueue.obj)
 
 line level    source
 
@@ -12,60 +12,61 @@ line level    source
    2          
    3          #include "CircularQueue.h"
    4          
-   5          unsigned int DataLength = 0;
-   6          unsigned int StartPointer = 0;
-   7          unsigned int EndPointer = 0;
-   8          
-   9          char add_Data_CircularQueue(unsigned char ch)
-  10          {
-  11   1        if( (DataLength < CircularQueueLength) && ( DataLength >= 0 ) )
-  12   1        {
-  13   2          circularQueueBuff[ EndPointer ] = ch;
-  14   2          DataLength ++;
-  15   2          EndPointer ++;
-  16   2          if( EndPointer >= CircularQueueLength )
-  17   2          {
-  18   3            EndPointer = 0;
-  19   3          }
-  20   2          return 1;
-  21   2        }
-  22   1        else
-  23   1        {
-  24   2          return -1;
-  25   2        }
-  26   1      }
-  27          
-  28          unsigned int get_DataLength()
-  29          {
-  30   1        return DataLength ;
-  31   1      }
-  32          
-  33          char get_Data_CircularQueue(unsigned char *ch)
-  34          {
-  35   1        if( DataLength > 0)
-  36   1        {
-  37   2          *ch = circularQueueBuff[ StartPointer ];
-  38   2          DataLength --;
-  39   2          StartPointer ++;
-  40   2          if( StartPointer  >= CircularQueueLength )
-  41   2          {
-  42   3            StartPointer = 0;
-  43   3          }
-  44   2          return 1;
-  45   2        }
-  46   1        else
-  47   1        {
-  48   2          return -1;
-  49   2        };
-  50   1      }
+   5          unsigned char xdata circularQueueBuff[CircularQueueLength];
+   6          unsigned int DataLength = 0;
+   7          unsigned int StartPointer = 0;
+   8          unsigned int EndPointer = 0;
+   9          
+  10          char add_Data_CircularQueue(unsigned char ch)
+  11          {
+  12   1        if( (DataLength < CircularQueueLength) && ( DataLength >= 0 ) )
+  13   1        {
+  14   2          circularQueueBuff[ EndPointer ] = ch;
+  15   2          DataLength ++;
+  16   2          EndPointer ++;
+  17   2          if( EndPointer >= CircularQueueLength )
+  18   2          {
+  19   3            EndPointer = 0;
+  20   3          }
+  21   2          return 1;
+  22   2        }
+  23   1        else
+  24   1        {
+  25   2          return -1;
+  26   2        }
+  27   1      }
+  28          
+  29          unsigned int get_DataLength()
+  30          {
+  31   1        return DataLength ;
+  32   1      }
+  33          
+  34          char get_Data_CircularQueue(unsigned char *ch)
+  35          {
+  36   1        if( DataLength > 0)
+  37   1        {
+  38   2          *ch = circularQueueBuff[ StartPointer ];
+  39   2          DataLength --;
+  40   2          StartPointer ++;
+  41   2          if( StartPointer  >= CircularQueueLength )
+  42   2          {
+  43   3            StartPointer = 0;
+  44   3          }
+  45   2          return 1;
+  46   2        }
+  47   1        else
+  48   1        {
+  49   2          return -1;
+  50   2        };
+  51   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    136    ----
-C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     11/29/2019 09:08:42 PAGE 2   
+C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     11/29/2019 20:59:27 PAGE 2   
 
+   CODE SIZE        =    136    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----    ----
+   XDATA SIZE       =    127    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----

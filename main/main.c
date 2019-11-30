@@ -6,7 +6,7 @@
 unsigned char xdata Line_1[3*16];
 unsigned char xdata Line_2[3*16];
 
-unsigned char xdata circularQueueBuff[CircularQueueLength];
+
 
 void main()
 {

@@ -2,6 +2,7 @@
 
 #include "CircularQueue.h"
 
+unsigned char xdata circularQueueBuff[CircularQueueLength];
 unsigned int DataLength = 0;
 unsigned int StartPointer = 0;
 unsigned int EndPointer = 0;
