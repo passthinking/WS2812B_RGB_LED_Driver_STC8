@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     11/29/2019 20:59:27 PAGE 1   
+C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     12/03/2019 21:24:10 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE CIRCULARQUEUE
@@ -62,11 +62,11 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     11/29/2019 20:59:27 PAGE 2   
+C51 COMPILER V9.53.0.0   CIRCULARQUEUE                                                     12/03/2019 21:24:10 PAGE 2   
 
-   CODE SIZE        =    136    ----
+   CODE SIZE        =    128    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    127    ----
+   XDATA SIZE       =    256    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----

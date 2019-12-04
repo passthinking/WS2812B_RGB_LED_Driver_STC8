@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-#define BRTUART1 115200UL
+#define BRTUART1 230400UL
 
 #define Timer2Value ( 65536 - FOSC / BRTUART1 / 4 )
 

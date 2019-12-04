@@ -3,7 +3,7 @@
 
 
 
-#define CircularQueueLength  127 
+#define CircularQueueLength  256 
 
 extern unsigned char xdata circularQueueBuff[ CircularQueueLength ];
 

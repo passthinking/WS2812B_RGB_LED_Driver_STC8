@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   TRANSMISSIONCOMMUICATIONPROTCOL                                   11/29/2019 21:41:29 PAGE 1   
+C51 COMPILER V9.53.0.0   TRANSMISSIONCOMMUICATIONPROTCOL                                   12/03/2019 20:46:23 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE TRANSMISSIONCOMMUICATIONPROTCOL
@@ -29,7 +29,7 @@ line level    source
   17          
   18          void receiverDataLoop( unsigned char ch )
   19          {
-  20   1      
+  20   1        
   21   1      }
 *** WARNING C280 IN LINE 18 OF ..\library\TransmissionCommuicationProtcol.c: 'ch': unreferenced local variable
   22          
