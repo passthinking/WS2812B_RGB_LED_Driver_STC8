@@ -389,6 +389,11 @@
               <FileType>1</FileType>
               <FilePath>..\library\TransmissionCommuicationProtcol.c</FilePath>
             </File>
+            <File>
+              <FileName>CircularQueueStruct.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\CircularQueueStruct.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

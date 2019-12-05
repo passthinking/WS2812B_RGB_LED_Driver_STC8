@@ -3,10 +3,10 @@
 #include "STC8_TIMER2_UART.h"
 #include "CircularQueue.h"
 
-unsigned char xdata Line_1[3*16];
-unsigned char xdata Line_2[3*16];
+unsigned char xdata Line_1[3*32];
+unsigned char xdata Line_2[3*32];
 
-unsigned char xdata circularQueueBuff[CircularQueueLength];
+unsigned char xdata circularQueueBuff[ CircularQueueLength ];
 
 void main()
 {
@@ -21,7 +21,7 @@ void main()
 	P5M0 = 0xFF;
 	P5M1 = 0x00;	
 	
-	for(Number = 0; Number < 3*16; Number ++)
+	for( Number = 0; Number < 3*32; Number ++ )
 	{
 		Line_1[ Number ] = 0xff;
 		Line_2[ Number ] = 0xff;
@@ -32,8 +32,9 @@ void main()
 	
 	while(1)
 	{
-		waterfall_light( Line_1, Line_2, 3 * 16 );
+		waterfall_light( Line_1, Line_2, 3 * 32 );
 		delay50us(5);															//@27.000MHz
+		
 		length = get_DataLength();
 		for( i = 0; i < length; i ++ )
 		{
@@ -43,9 +44,9 @@ void main()
 				Line_2[ Number ] = ch_value;
 				
 				Number ++;
-				if( Number >= 3*16 ) Number = 0;
+				if( Number >= 3*32 ) Number = 0;
 				
-				UART1_Send( ch_value );
+//				UART1_Send( ch_value );
 			}
 		}
 	}
