@@ -1,8 +1,0 @@
-"..\obj\main.obj",
-"..\obj\WS2812B_RGB_Driver.obj",
-"..\obj\STC8_TIMER2_UART.obj",
-"..\obj\CircularQueue.obj",
-"..\obj\TransmissionCommuicationProtcol.obj" 
-TO "..\obj\WS2812B全彩LED灯驱动" 
-
-PRINT("..\obj\WS2812B全彩LED灯驱动.map") removeunused 
