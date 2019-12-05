@@ -1,10 +1,10 @@
 
 /*
-	´«ÊäĞ­Òé£º
-		µÚÒ»£º´«ÊäÖ¸Áî
+	ï¿½ï¿½ï¿½ï¿½Ğ­ï¿½é£º
+		ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 		|__"SP"__|__Comm_byte__|__"H:"__|__DataLength__|__"D:"__|___...data...__|__ED__|__AddCheckValue__|
 		
-		µÚ¶ş£º´«ÊäÊı¾İ
+		ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		|__"SP"__|__Comm_byte__|__"H:"__|__StartAddress__|__DataLength__|__"D:"__|___...data...__|__ED__|__AddCheckValue__|
 		
 */
@@ -15,6 +15,18 @@
 
 #include "main.h"
 
+typedef struct TransmissionCommuicationProtcol_Comm
+{
+	int DataLength;  		//æŒ‡ä»¤é•¿åº¦
+	unsigned char *Data_p;	//æŒ‡ä»¤æŒ‡é’ˆ
+} Transmission_Comm_t;
+
+typedef struct TransmissionCommuicationProtcol_Data
+{
+	int StartAddress;		//æ•°æ®èµ·å§‹åœ°å€
+	int Datalength;			//æ•°æ®é•¿åº¦
+	unsigned char *Data_p;	//æ•°æ®æŒ‡é’ˆ
+} Transmission_Data_t;
 
 
 #endif
