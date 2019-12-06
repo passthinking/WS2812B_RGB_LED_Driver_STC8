@@ -307,7 +307,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\main;..\library</IncludePath>
+              <IncludePath>..\main;..\library;..\user_master</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -362,7 +362,7 @@
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\main\main.c</FilePath>
+              <FilePath>.\main.c</FilePath>
             </File>
           </Files>
         </Group>

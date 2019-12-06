@@ -37,7 +37,46 @@ void initReceiver(void)
 	trans.Data_p_TWO = receiverDataBuff_TWO;
 	trans.Receive_completion_flag = 0;
 	trans.Receive_Count = 0;
+	
 }
+
+/**********************************************************
+ * 发送数据
+**********************************************************/
+void sendData( unsigned char *ch_p, unsigned int dataLength )
+{
+	unsigned int i = 0;
+	unsigned char AddCheackValue = 0;
+	
+	if( dataLength > 0 )
+	{
+		UART1_Send( headCharFlag[0] );			//S
+		AddCheackValue = headCharFlag[0];
+		UART1_Send( headCharFlag[1] );			//P
+		AddCheackValue += headCharFlag[1];
+		UART1_Send( dataLength >> 8 );			//dataLength 高8位
+		AddCheackValue += (dataLength >> 8) & 0xff;
+		UART1_Send( dataLength );						//dataLength 低8位
+		AddCheackValue += dataLength & 0xff;
+		UART1_Send( dataCharFlag[0] );			//D
+		AddCheackValue += dataCharFlag[0];
+		UART1_Send( dataCharFlag[1] );			//;
+		AddCheackValue += dataCharFlag[1];
+		for( i = 0; i < dataLength; i ++ )
+		{
+			UART1_Send( ch_p[ i ] );
+			AddCheackValue += ch_p[ i ];
+		}
+		UART1_Send( endCharFlag[0] );				//E
+		AddCheackValue += endCharFlag[0];
+		UART1_Send( endCharFlag[1] );				//D
+		AddCheackValue += endCharFlag[1];
+		UART1_Send( AddCheackValue );				//AddCheackValue
+	}
+	
+	
+}
+
 
 /**********************************************************
  * 接收数据
@@ -51,7 +90,6 @@ void receiverLoop(unsigned char ch)
 		{
 			receiverByteCount ++;
 			AddCheckValue += ch;
-			UART1_Send( ch  );
 		}
 	}else
 	{
@@ -61,7 +99,6 @@ void receiverLoop(unsigned char ch)
 			{
 				receiverByteCount ++;
 				AddCheckValue += ch;
-				UART1_Send( ch  );
 			}else
 			{
 				receiverByteCount = 0;
@@ -73,7 +110,6 @@ void receiverLoop(unsigned char ch)
 			{
 				receiverDataLength = ch;
 				receiverDataLength <<= 8;
-				UART1_Send( ch  );
 				receiverByteCount ++;
 				AddCheckValue += ch;
 			}else
@@ -81,7 +117,6 @@ void receiverLoop(unsigned char ch)
 				if( receiverByteCount == 3 )//trans->DataLength | 0x00FF;
 				{
 					receiverDataLength |= ch;
-					UART1_Send( ch  );
 					receiverByteCount ++;
 					AddCheckValue += ch;
 				}else
@@ -90,7 +125,6 @@ void receiverLoop(unsigned char ch)
 					{
 						if(dataCharFlag[0] == ch )
 						{
-							UART1_Send( ch  );
 							receiverByteCount ++;
 							AddCheckValue += ch;
 						}else
@@ -104,7 +138,6 @@ void receiverLoop(unsigned char ch)
 						{
 							if(dataCharFlag[1] == ch )
 							{
-								UART1_Send( ch  );
 								receiverByteCount ++;
 								AddCheckValue += ch;
 							}else
@@ -123,7 +156,6 @@ void receiverLoop(unsigned char ch)
 								{
 									trans.Data_p_TWO[ receiverByteCount - 6 ] = ch;
 								}
-								UART1_Send( ch  );
 								receiverByteCount ++;
 								AddCheckValue += ch;
 							}else
@@ -132,7 +164,6 @@ void receiverLoop(unsigned char ch)
 								{
 									if( endCharFlag[0] == ch )
 									{
-										UART1_Send( ch  );
 										receiverByteCount ++;
 										AddCheckValue += ch;
 									}else
@@ -146,7 +177,6 @@ void receiverLoop(unsigned char ch)
 									{
 										if( endCharFlag[1] == ch )
 										{
-											UART1_Send( ch  );
 											receiverByteCount ++;
 											AddCheckValue += ch;
 										}else
@@ -160,29 +190,17 @@ void receiverLoop(unsigned char ch)
 										{
 											UART1_Send( AddCheckValue );
 											if( AddCheckValue == ch )
-											{
-												UART1_Send( 0xff );
-												UART1_Send( trans.Receive_Count );
-												
+											{												
 												if( trans.Receive_Count == 0 )
 												{
 													trans.DataLength_ONE = receiverDataLength;
 													trans.Receive_Count = 1;
-													for( i = 0; i < trans.DataLength_ONE; i ++ )
-													{
-														UART1_Send( trans.Data_p_ONE[ i ] );
-													}
 												}else
 												{
 													trans.DataLength_TWO = receiverDataLength;
 													trans.Receive_Count = 0;
-													for( i = 0; i < trans.DataLength_TWO; i ++ )
-													{
-														UART1_Send( trans.Data_p_TWO[ i ] );
-													}
 												}
 												trans.Receive_completion_flag = 1;
-												
 												
 											}
 											receiverByteCount = 0;
@@ -217,7 +235,6 @@ void getReceiverData( unsigned char *data_p_one, unsigned char *data_p_two, unsi
 			{
 				count = dataLimt;
 			}
-			UART1_Send( count );
 			if( trans.Data_p_ONE[0] == 0 )
 			{
 				for( i = 0; i < count - 1; i ++ )
@@ -240,7 +257,6 @@ void getReceiverData( unsigned char *data_p_one, unsigned char *data_p_two, unsi
 			{
 				count = dataLimt;
 			}
-			UART1_Send( count );
 			if( trans.Data_p_TWO[0] == 0 )
 			{
 				for( i = 0; i < count - 1; i ++ )
