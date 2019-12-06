@@ -2,6 +2,7 @@
 #include "WS2812B_RGB_Driver.h"
 #include "STC8_TIMER2_UART.h"
 #include "CircularQueue.h"
+#include "TransmissionCommuicationProtcol.h"
 
 unsigned char xdata Line_1[3*32];
 unsigned char xdata Line_2[3*32];
@@ -18,6 +19,7 @@ void main()
 	unsigned int length = 0;
 
 	initTimer2_UART();
+	initReceiver(); 
 	P5M0 = 0xFF;
 	P5M1 = 0x00;	
 	
@@ -40,15 +42,11 @@ void main()
 		{
 			if( get_Data_CircularQueue( &ch_value ) > 0 )
 			{
-				Line_1[ Number ] = ch_value;
-				Line_2[ Number ] = ch_value;
-				
-				Number ++;
-				if( Number >= 3*32 ) Number = 0;
-				
+				receiverLoop( ch_value );
 //				UART1_Send( ch_value );
 			}
 		}
+		getReceiverData( Line_1, Line_2, 3 * 32 );
 	}
 }
 
