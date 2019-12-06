@@ -44,14 +44,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>..\obj\</OutputDirectory>
+          <OutputDirectory>..\obj_slave\</OutputDirectory>
           <OutputName>WS2812B全彩LED灯驱动</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>..\obj\</ListingPath>
+          <ListingPath>..\obj_slave\</ListingPath>
           <HexFormatSelection>0</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -388,6 +388,11 @@
               <FileName>TransmissionCommuicationProtcol.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\library\TransmissionCommuicationProtcol.c</FilePath>
+            </File>
+            <File>
+              <FileName>CircularQueueStruct.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\CircularQueueStruct.c</FilePath>
             </File>
           </Files>
         </Group>

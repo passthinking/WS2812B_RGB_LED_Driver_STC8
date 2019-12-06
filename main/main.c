@@ -4,8 +4,8 @@
 #include "CircularQueue.h"
 #include "TransmissionCommuicationProtcol.h"
 
-unsigned char xdata Line_1[3*32];
-unsigned char xdata Line_2[3*32];
+unsigned char xdata Line_1[ 3*32 ];
+unsigned char xdata Line_2[ 3*32 ];
 
 unsigned char xdata circularQueueBuff[ CircularQueueLength ];
 
