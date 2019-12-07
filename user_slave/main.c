@@ -45,7 +45,6 @@ void main()
 				receiverLoop( ch_value );
 //				UART1_Send( ch_value );
 //				SendDataBuff[i] = ch_value;
-				
 			}
 		}
 		getReceiverData( Line_1, Line_2, 3 * 32 );
@@ -54,13 +53,10 @@ void main()
 	}
 }
 
-
 void Uart1_Receiver_Data_CallBuck(unsigned char ch)
 {
 	add_Data_CircularQueue(ch);
 }
-
-
 
 void delayms( int t )
 {

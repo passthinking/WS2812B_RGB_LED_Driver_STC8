@@ -30,22 +30,23 @@ void main()
 	
 	while(1)
 	{
-		delayms(1000);
-		
 		length = get_DataLength();
-		for( i = 0; i < length; i ++ )
+		if( length >= 3 * 32 + 2 )
 		{
-			if( get_Data_CircularQueue( &ch_value ) > 0 )
+			for( i = 0; i < length; i ++ )
 			{
-				receiverLoop( ch_value );
+				if( get_Data_CircularQueue( &ch_value ) > 0 )
+				{
+//				receiverLoop( ch_value );
 //				UART1_Send( ch_value );
-				
-				SendDataBuff[i] = ch_value;
-				
+					
+					SendDataBuff[i + 1] = ch_value;
+					
+				}
 			}
+			sendData( SendDataBuff, 3 * 32 + 2 );
 		}
 		
-		sendData( SendDataBuff, length );
 	}
 }
 

@@ -190,17 +190,29 @@ void receiverLoop(unsigned char ch)
 										{
 											UART1_Send( AddCheckValue );
 											if( AddCheckValue == ch )
-											{												
+											{	
+												UART1_Send( AddCheckValue );												
 												if( trans.Receive_Count == 0 )
 												{
 													trans.DataLength_ONE = receiverDataLength;
 													trans.Receive_Count = 1;
+													for( i = 0; i < trans.DataLength_ONE; i ++ )
+													{
+														UART1_Send( trans.Data_p_ONE[ i ] );	
+													}
 												}else
 												{
 													trans.DataLength_TWO = receiverDataLength;
 													trans.Receive_Count = 0;
+													for( i = 0; i < trans.DataLength_TWO; i ++ )
+													{
+														UART1_Send( trans.Data_p_TWO[ i ] );	
+													}
 												}
 												trans.Receive_completion_flag = 1;
+//												UART1_Send( AddCheckValue );	
+//												UART1_Send( trans.Receive_completion_flag );	
+//												UART1_Send( trans.Receive_Count );	
 												
 											}
 											receiverByteCount = 0;
@@ -235,17 +247,21 @@ void getReceiverData( unsigned char *data_p_one, unsigned char *data_p_two, unsi
 			{
 				count = dataLimt;
 			}
+//			UART1_Send( count >> 8 );	
+//			UART1_Send( count );	
 			if( trans.Data_p_ONE[0] == 0 )
 			{
 				for( i = 0; i < count - 1; i ++ )
 				{
 					data_p_one[ i ] = trans.Data_p_ONE[ i + 1 ];
+//					UART1_Send( data_p_one[ i ] );	
 				}
 			}else if( trans.Data_p_ONE[0] == 1 )
 			{
 				for( i = 0; i < count - 1; i ++ )
 				{
 					data_p_two[ i ] = trans.Data_p_ONE[ i + 1 ];
+//					UART1_Send( data_p_two[ i ] );
 				}
 			}
 		}else
@@ -257,17 +273,21 @@ void getReceiverData( unsigned char *data_p_one, unsigned char *data_p_two, unsi
 			{
 				count = dataLimt;
 			}
+//			UART1_Send( count >> 8 );	
+//			UART1_Send( count );	
 			if( trans.Data_p_TWO[0] == 0 )
 			{
 				for( i = 0; i < count - 1; i ++ )
 				{
 					data_p_one[ i ] = trans.Data_p_TWO[ i + 1 ];
+//					UART1_Send( data_p_one[ i ] );
 				}
 			}else if( trans.Data_p_TWO[0] == 1 )
 			{
 				for( i = 0; i < count - 1; i ++ )
 				{
 					data_p_two[ i ] = trans.Data_p_TWO[ i + 1 ];
+//					UART1_Send( data_p_two[ i ] );
 				}
 			}
 		}
