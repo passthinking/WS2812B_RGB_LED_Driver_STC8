@@ -26,8 +26,8 @@ void main()
 	
 	for( i = 0; i < 3 * 32; i++ )
 	{
-		Line_1[ i ] = 0xff;
-		Line_2[ i ] = 0xff;
+		Line_1[ i ] = 0x00;
+		Line_2[ i ] = 0x00;
 	}
 	
 	Uaurt1_Send_String("start up ...");
