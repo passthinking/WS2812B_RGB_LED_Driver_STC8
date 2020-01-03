@@ -71,7 +71,7 @@ GenerateClassCluster=0
 DocumentUniqueId=SNKKFUVX
 
 [Document3]
-DocumentPath=..\..\..\..\PCBLibrirary\mylib.PCBLIB
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -85,10 +85,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=EPMYYBDV
+DocumentUniqueId=
 
 [Document4]
-DocumentPath=..\..\..\..\PCBLibrirary\mylib.SCHLIB
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices.SCHLIB
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -102,10 +102,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=PLQHWPAN
+DocumentUniqueId=
 
 [Document5]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\Cap.SchLib
+DocumentPath=..\..\..\PCBLibrirary\mylib.PCBLIB
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -122,7 +122,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document6]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\CrystalOscillator.SchLib
+DocumentPath=..\..\..\PCBLibrirary\mylib.SCHLIB
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -139,7 +139,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document7]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\Diode.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\Cap.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -156,7 +156,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document8]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\IC.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\CrystalOscillator.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -173,7 +173,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document9]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\IUD.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\Diode.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -190,7 +190,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document10]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\LDO.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\IC.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -207,7 +207,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document11]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\LED.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\IUD.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -224,7 +224,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document12]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\MCU.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\LDO.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -241,7 +241,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document13]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\Miscellaneous Devices LC.PcbLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\LED.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -258,7 +258,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document14]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\MOS.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\MCU.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -275,7 +275,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document15]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\RES.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\Miscellaneous Devices LC.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -292,7 +292,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document16]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\Transistor_NPN.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\MOS.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -309,7 +309,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document17]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\Transistor_PNP.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\RES.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -326,7 +326,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document18]
-DocumentPath=..\..\..\..\PCBLibrirary\Miscellaneous Devices LC\Zener.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\Transistor_NPN.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -343,7 +343,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document19]
-DocumentPath=..\..\..\..\PCBLibrirary\stc15xx-STC8-sch-pcb-library\stc15xx-sch-pcb-library\PCB_SCH_LIB\stcmcu_Altium1819Lib\stcmcu_altium1819.PcbLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\Transistor_PNP.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -360,7 +360,7 @@ GenerateClassCluster=0
 DocumentUniqueId=
 
 [Document20]
-DocumentPath=..\..\..\..\PCBLibrirary\stc15xx-STC8-sch-pcb-library\stc15xx-sch-pcb-library\PCB_SCH_LIB\stcmcu_Altium1819Lib\stcmcu_altium1819.SchLib
+DocumentPath=..\..\..\PCBLibrirary\Miscellaneous Devices LC\Zener.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
